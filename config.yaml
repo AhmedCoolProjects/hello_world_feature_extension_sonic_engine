@@ -1,0 +1,23 @@
+id: hello_world_feature_extension
+name: Hello World Feature Extension
+description: This is a hello world feature extension
+version: 1.0.0
+authors: Ahmed Bargady <https://github.com/AhmedCoolProjects>
+license: BSD
+
+repository:
+
+requirements: requirements.txt
+
+log:
+  dir: ./logs
+  level: INFO
+
+channels:
+  input:
+    files:
+      [
+        /home/jinapro/Desktop/um6p/engines/sonic_engine_project/templates/template1/pcap/2022-11-17-Bumblebee-infection-traffic.pcap,
+      ]
+    interfaces: []
+  publish: [helloWorldFeatureExtensionChannel]
