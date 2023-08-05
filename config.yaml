@@ -17,7 +17,7 @@ channels:
   input:
     files:
       [
-        /home/jinapro/Desktop/um6p/engines/sonic_engine_project/templates/template1/pcap/2022-11-17-Bumblebee-infection-traffic.pcap,
+        ./pcap/2022-11-17-Bumblebee-infection-traffic.pcap,
       ]
     interfaces: []
   publish: [helloWorldFeatureExtensionChannel]
