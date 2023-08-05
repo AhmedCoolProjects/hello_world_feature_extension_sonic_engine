@@ -18,7 +18,6 @@ class HelloWorldFeatureExtension(IMultiprocessPlugin):
 
     def run(self):
         for inpt in self.config.channels.input.files or []:
-            print("Start")
             self.extract_ip_addresses(inpt)
 
     def extract_ip_addresses(self, pcap_file_path):
@@ -40,7 +39,3 @@ class HelloWorldFeatureExtension(IMultiprocessPlugin):
         for ch in self.config.channels.publish:
             __db__.publish(ch, ip_data_id)
 
-
-if __name__ == '__main__':
-    obj = HelloWorldFeatureExtension(None)
-    obj.run()
