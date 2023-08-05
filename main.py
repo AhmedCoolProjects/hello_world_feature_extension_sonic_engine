@@ -23,7 +23,7 @@ class HelloWorldFeatureExtension(IMultiprocessPlugin):
 
     def extract_ip_addresses(self, pcap_file_path):
 
-        packets = rdpcap(pcap_file_path)
+        packets = rdpcap(relative(__file__, pcap_file_path))
         for packet in packets:
             if IP in packet:
                 src_ip = packet[IP].src
