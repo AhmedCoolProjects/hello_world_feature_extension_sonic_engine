@@ -14,7 +14,8 @@ class HelloWorldFeatureExtension(IMultiprocessPlugin):
         self.config = loadConfig(FeatureConfig, relative(
             __file__, './config.yaml'))
 
-        print("--> Hello World Feature Extension Loaded")
+        print("--> Hello World Feature Extension DUPLICATION BRANCH Loaded")
+
 
     def run(self):
         for inpt in self.config.channels.input.files or []:
