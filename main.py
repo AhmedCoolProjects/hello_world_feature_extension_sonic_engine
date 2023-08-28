@@ -10,11 +10,11 @@ class HelloWorldFeatureExtension(IMultiprocessPlugin):
     def __init__(self, p):
         IMultiprocessPlugin.__init__(self, p)
 
-        # TODO: to be added as a simple function in the sonic engine
-        self.config = loadConfig(FeatureConfig, relative(
-            __file__, './config.yaml'))
+        data = p.recv()
+        self.config = data['config']
+        message = data['message']
 
-        print("--> Hello World Feature Extension DUPLICATION BRANCH Loaded")
+        print(f'{message}')
 
 
     def run(self):
