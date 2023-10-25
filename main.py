@@ -1,9 +1,8 @@
 import uuid
 from scapy.all import *
 from yapsy.IMultiprocessPlugin import IMultiprocessPlugin
-from sonic_engine.util.functions import loadConfig, relative
+from sonic_engine.util.functions import relative
 from sonic_engine.core.database import __db__
-from sonic_engine.model.extension import FeatureConfig
 
 
 class HelloWorldFeatureExtension(IMultiprocessPlugin):
@@ -39,4 +38,3 @@ class HelloWorldFeatureExtension(IMultiprocessPlugin):
         })
         for ch in self.config.channels.publish:
             __db__.publish(ch, ip_data_id)
-
