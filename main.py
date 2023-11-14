@@ -1,8 +1,10 @@
 import uuid
 from scapy.all import *
 from yapsy.IMultiprocessPlugin import IMultiprocessPlugin
-from sonic_engine.util.functions import relative
+from sonic_engine.util.functions import EngineUtil
 from sonic_engine.core.database import __db__
+
+engine_util = EngineUtil()
 
 
 class HelloWorldFeatureExtension(IMultiprocessPlugin):
@@ -10,10 +12,9 @@ class HelloWorldFeatureExtension(IMultiprocessPlugin):
         IMultiprocessPlugin.__init__(self, p)
 
         data = p.recv()
-        config = data['config']
-        message = data['message']
+        self.config = data["config"]
+        message = data["message"]
 
-        self.config = config
         print(f"{message}")
 
     def run(self):
@@ -21,8 +22,7 @@ class HelloWorldFeatureExtension(IMultiprocessPlugin):
             self.extract_ip_addresses(inpt)
 
     def extract_ip_addresses(self, pcap_file_path):
-
-        packets = rdpcap(relative(__file__, pcap_file_path))
+        packets = rdpcap(engine_util.relative(__file__, pcap_file_path))
         for packet in packets:
             if IP in packet:
                 src_ip = packet[IP].src
@@ -30,11 +30,7 @@ class HelloWorldFeatureExtension(IMultiprocessPlugin):
                 self.store_in_db(src_ip, dst_ip)
 
     def store_in_db(self, src_ip, dst_ip):
-
         ip_data_id = uuid.uuid4().hex
-        __db__.store('ip_data', ip_data_id, {
-            'src_ip': src_ip,
-            'dst_ip': dst_ip
-        })
+        __db__.store("ip_data", ip_data_id, {"src_ip": src_ip, "dst_ip": dst_ip})
         for ch in self.config.channels.publish:
             __db__.publish(ch, ip_data_id)
