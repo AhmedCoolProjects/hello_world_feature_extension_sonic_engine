@@ -5,8 +5,6 @@ version: 1.0.0
 authors: Ahmed Bargady <https://github.com/AhmedCoolProjects>
 license: BSD
 
-repository:
-
 requirements: requirements.txt
 
 log:
@@ -15,9 +13,6 @@ log:
 
 channels:
   input:
-    files:
-      [
-        ./pcap/2022-11-17-Bumblebee-infection-traffic.pcap,
-      ]
+    files: [./pcap/2022-11-17-Bumblebee-infection-traffic.pcap]
     interfaces: []
   publish: [helloWorldFeatureExtensionChannel]
