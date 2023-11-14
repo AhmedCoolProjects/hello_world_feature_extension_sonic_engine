@@ -17,7 +17,7 @@ pytest==7.4.0
 PyYAML==6.0.1
 redis==4.2.2
 scapy==2.5.0
-sonic-engine @ git+https://github.com/sooualil/sonic_engine_yapsy.git@d73ad0e602775020d50500afa110116aed3ffb5c
+# sonic-engine @ git+https://github.com/sooualil/sonic_engine_yapsy.git@d73ad0e602775020d50500afa110116aed3ffb5c
 termcolor==2.3.0
 Werkzeug==2.3.6
 wrapt==1.15.0

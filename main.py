@@ -1,9 +1,10 @@
 import uuid
 from scapy.all import *
 from yapsy.IMultiprocessPlugin import IMultiprocessPlugin
-from sonic_engine.util.functions import loadConfig, relative
+from sonic_engine.util.functions import EngineUtil
 from sonic_engine.core.database import __db__
-from sonic_engine.model.extension import FeatureConfig
+
+engine_util = EngineUtil()
 
 
 class HelloWorldFeatureExtension(IMultiprocessPlugin):
@@ -23,7 +24,7 @@ class HelloWorldFeatureExtension(IMultiprocessPlugin):
 
     def extract_ip_addresses(self, pcap_file_path):
 
-        packets = rdpcap(relative(__file__, pcap_file_path))
+        packets = rdpcap(engine_util.relative(__file__, pcap_file_path))
         for packet in packets:
             if IP in packet:
                 src_ip = packet[IP].src
